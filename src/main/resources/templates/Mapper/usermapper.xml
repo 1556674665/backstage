@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="guanwang.s78.Dao.UserMapper">
+    <resultMap id="getAdministrators_table" type="guanwang.s78.User.Administrators_table">
+            <result property="id" column="id" />
+            <result property="create_date" column="create_date" />
+            <result property="modify_date" column="modify_date" />
+            <result property="user_name" column="user_name" />
+            <result property="name" column="name" />
+            <result property="password" column="password" />
+            <result property="gender" column="gender" />
+    </resultMap>
+    <resultMap id="getPicture_table" type="guanwang.s78.User.Picture_table">
+            <result property="id" column="id" />
+            <result property="picture" column="picture" />
+            <result property="create_date" column="create_date" />
+            <result property="modify_date" column="modify_date" />
+            <result property="type" column="type" />
+            <result property="foreign_id" column="foreign_id" />
+    </resultMap>
+    <resultMap id="getCurriculum_table" type="guanwang.s78.User.Curriculum_table">
+        <result property="id" column="id" />
+        <result property="create_date" column="create_date" />
+        <result property="modify_date" column="modify_date" />
+        <result property="curriculum_name" column="curriculum_name" />
+        <result property="course_introduction" column="course_introduction" />
+    </resultMap>
+    <resultMap id="getTeacher_table" type="guanwang.s78.User.Teacher_table">
+        <result property="id" column="id" />
+        <result property="create_date" column="create_date" />
+        <result property="modify_date" column="modify_date" />
+        <result property="name" column="name" />
+        <result property="brief_introduction" column="brief_introduction" />
+        <result property="age" column="age" />
+        <result property="gender" column="gender" />
+        <result property="QQ_number" column="QQ_number" />
+        <result property="wechat_number" column="wechat_number" />
+        <result property="introduce" column="introduce" />
+    </resultMap>
+    <resultMap id="getCollege_News_table" type="guanwang.s78.User.College_News_table">
+        <result property="id" column="id" />
+        <result property="create_date" column="create_date" />
+        <result property="modify_date" column="modify_date" />
+        <result property="title" column="title" />
+        <result property="content" column="content" />
+        <result property="source" column="source" />
+    </resultMap>
+    <resultMap id="getEnrollment_and_employment_table" type="guanwang.s78.User.Enrollment_and_employment_table">
+        <result property="id" column="id" />
+        <result property="create_date" column="create_date" />
+        <result property="modify_date" column="modify_date" />
+        <result property="title" column="title" />
+        <result property="content" column="content" />
+        <result property="source" column="source" />
+    </resultMap>
+    <resultMap id="getMaster_workstation_table" type="guanwang.s78.User.Master_workstation_table">
+        <result property="id" column="id" />
+        <result property="create_date" column="create_date" />
+        <result property="modify_date" column="modify_date" />
+        <result property="title" column="title" />
+        <result property="content" column="content" />
+        <result property="source" column="source" />
+    </resultMap>
+    <resultMap id="getSchool_introduction_table" type="guanwang.s78.User.School_introduction_table">
+        <result property="id" column="id" />
+        <result property="create_date" column="create_date" />
+        <result property="modify_date" column="modify_date" />
+        <result property="brief_introduction" column="brief_introduction" />
+        <result property="teaching_advantages" column="teaching_advantages" />
+        <result property="college_honors" column="college_honors" />
+    </resultMap>
+    <resultMap id="getRoute_to_school_table" type="guanwang.s78.User.Route_to_school_table">
+        <result property="id" column="id" />
+        <result property="create_date" column="create_date" />
+        <result property="modify_date" column="modify_date" />
+        <result property="registration_telephone" column="registration_telephone" />
+        <result property="school_address" column="school_address" />
+        <result property="school_website" column="school_website" />
+        <result property="nearby_bus_stop" column="nearby_bus_stop" />
+        <result property="nearby_bus" column="nearby_bus" />
+    </resultMap>
+<!--    判断管理员登录-->
+    <select id="selectusername" resultMap="getAdministrators_table">
+    select * from Administrators_table
+    </select>
+<!--    查询密码-->
+    <select id="selectpassword" resultType="String">
+        select `password` from Administrators_table where user_name = #{user_name}
+    </select>
+<!--    修改密码-->
+    <update id="updatepassword">
+        update Administrators_table set password=#{password} where `user_name`=#{name}
+    </update>
+
+<!--    查询管理员-->
+    <select id="selectAdministrators" resultMap="getAdministrators_table">
+        select * from Administrators_table where user_name like '%${user_name,jdbcType=VARCHAR}%'
+    </select>
+<!--    删除管理员-->
+    <delete id="deladministrators">
+        delete from Administrators_table where id=#{id}
+    </delete>
+<!--    添加管理员-->
+    <insert id="insertadministrators">
+        insert into Administrators_table(create_date,modify_date,user_name,`name`,`password`,gender) value(#{create_date},#{modify_date},#{user_name},#{name},#{password},#{gender})
+    </insert>
+<!--    展示管理员-->
+    <select id="selectAdministrators_s" resultMap="getAdministrators_table">
+        select * from Administrators_table where id=#{id}
+    </select>
+<!--    修改管理员-->
+    <update id="updateadministrators">
+        update Administrators_table set `name`=#{name},gender=#{gender},modify_date=#{modify_date} where id=#{id}
+    </update>
+
+    <!--    查询学校新闻-->
+    <select id="selectCollege_News_table" resultMap="getCollege_News_table">
+        select * from College_News_table where title like '%${title,jdbcType=VARCHAR}%'
+    </select>
+    <!--    删除学校新闻-->
+    <delete id="delCollege_News_table">
+        delete from College_News_table where id=#{id}
+    </delete>
+    <!--    添加学校新闻-->
+    <insert id="insertCollege_News_table">
+        insert into College_News_table(create_date,modify_date,title,source,content) value(#{create_date},#{modify_date},#{title},#{source},#{content})
+    </insert>
+    <!--    展示学校新闻-->
+    <select id="selectCollege_News_table_s" resultMap="getCollege_News_table">
+        select * from College_News_table where id=#{id}
+    </select>
+    <!--    修改学校新闻-->
+    <update id="updateCollege_News_table">
+        update College_News_table set title=#{title},source=#{source},content=#{content},modify_date=#{modify_date} where id=#{id}
+    </update>
+
+    <!--    查询招生就业-->
+    <select id="selectEnrollment_and_employment_table" resultMap="getEnrollment_and_employment_table">
+        select * from Enrollment_and_employment_table where title like '%${title,jdbcType=VARCHAR}%'
+    </select>
+    <!--    删除招生就业-->
+    <delete id="delEnrollment_and_employment_table">
+        delete from Enrollment_and_employment_table where id=#{id}
+    </delete>
+    <!--    添加招生就业-->
+    <insert id="insertEnrollment_and_employment_table">
+        insert into Enrollment_and_employment_table(create_date,modify_date,title,source,content) value(#{create_date},#{modify_date},#{title},#{source},#{content})
+    </insert>
+    <!--    展示招生就业-->
+    <select id="selectEnrollment_and_employment_table_s" resultMap="getEnrollment_and_employment_table">
+        select * from Enrollment_and_employment_table where id=#{id}
+    </select>
+    <!--    修改招生就业-->
+    <update id="updateEnrollment_and_employment_table">
+        update Enrollment_and_employment_table set title=#{title},source=#{source},content=#{content},modify_date=#{modify_date} where id=#{id}
+    </update>
+
+    <!--    查询硕士工作站-->
+    <select id="selectMaster_workstation_table" resultMap="getMaster_workstation_table">
+        select * from Master_workstation_table where title like '%${title,jdbcType=VARCHAR}%'
+    </select>
+    <!--    删除硕士工作站-->
+    <delete id="delMaster_workstation_table">
+        delete from Master_workstation_table where id=#{id}
+    </delete>
+    <!--    添加硕士工作站-->
+    <insert id="insertMaster_workstation_table">
+        insert into Master_workstation_table(create_date,modify_date,title,source,content) value(#{create_date},#{modify_date},#{title},#{source},#{content})
+    </insert>
+    <!--    展示硕士工作站-->
+    <select id="selectMaster_workstation_table_s" resultMap="getMaster_workstation_table">
+        select * from Master_workstation_table where id=#{id}
+    </select>
+    <!--    修改硕士工作站-->
+    <update id="updateMaster_workstation_table">
+        update Master_workstation_table set title=#{title},source=#{source},content=#{content},modify_date=#{modify_date} where id=#{id}
+    </update>
+
+</mapper>
