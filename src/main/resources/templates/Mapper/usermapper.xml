@@ -82,99 +82,99 @@
     </resultMap>
 <!--    判断管理员登录-->
     <select id="selectusername" resultMap="getAdministrators_table">
-    select * from Administrators_table
+    select * from administrators_table
     </select>
 <!--    查询密码-->
     <select id="selectpassword" resultType="String">
-        select `password` from Administrators_table where user_name = #{user_name}
+        select `password` from administrators_table where user_name = #{user_name}
     </select>
 <!--    修改密码-->
     <update id="updatepassword">
-        update Administrators_table set password=#{password} where `user_name`=#{name}
+        update administrators_table set password=#{password} where `user_name`=#{name}
     </update>
 
 <!--    查询管理员-->
     <select id="selectAdministrators" resultMap="getAdministrators_table">
-        select * from Administrators_table where user_name like '%${user_name,jdbcType=VARCHAR}%'
+        select * from administrators_table where user_name like '%${user_name,jdbcType=VARCHAR}%'
     </select>
 <!--    删除管理员-->
     <delete id="deladministrators">
-        delete from Administrators_table where id=#{id}
+        delete from administrators_table where id=#{id}
     </delete>
 <!--    添加管理员-->
     <insert id="insertadministrators">
-        insert into Administrators_table(create_date,modify_date,user_name,`name`,`password`,gender) value(#{create_date},#{modify_date},#{user_name},#{name},#{password},#{gender})
+        insert into administrators_table(create_date,modify_date,user_name,`name`,`password`,gender) value(#{create_date},#{modify_date},#{user_name},#{name},#{password},#{gender})
     </insert>
 <!--    展示管理员-->
     <select id="selectAdministrators_s" resultMap="getAdministrators_table">
-        select * from Administrators_table where id=#{id}
+        select * from administrators_table where id=#{id}
     </select>
 <!--    修改管理员-->
     <update id="updateadministrators">
-        update Administrators_table set `name`=#{name},gender=#{gender},modify_date=#{modify_date} where id=#{id}
+        update administrators_table set `name`=#{name},gender=#{gender},modify_date=#{modify_date} where id=#{id}
     </update>
 
     <!--    查询学校新闻-->
     <select id="selectCollege_News_table" resultMap="getCollege_News_table">
-        select * from College_News_table where title like '%${title,jdbcType=VARCHAR}%'
+        select * from college_News_table where title like '%${title,jdbcType=VARCHAR}%'
     </select>
     <!--    删除学校新闻-->
     <delete id="delCollege_News_table">
-        delete from College_News_table where id=#{id}
+        delete from college_News_table where id=#{id}
     </delete>
     <!--    添加学校新闻-->
     <insert id="insertCollege_News_table">
-        insert into College_News_table(create_date,modify_date,title,source,content) value(#{create_date},#{modify_date},#{title},#{source},#{content})
+        insert into college_News_table(create_date,modify_date,title,source,content) value(#{create_date},#{modify_date},#{title},#{source},#{content})
     </insert>
     <!--    展示学校新闻-->
     <select id="selectCollege_News_table_s" resultMap="getCollege_News_table">
-        select * from College_News_table where id=#{id}
+        select * from college_News_table where id=#{id}
     </select>
     <!--    修改学校新闻-->
     <update id="updateCollege_News_table">
-        update College_News_table set title=#{title},source=#{source},content=#{content},modify_date=#{modify_date} where id=#{id}
+        update college_News_table set title=#{title},source=#{source},content=#{content},modify_date=#{modify_date} where id=#{id}
     </update>
 
     <!--    查询招生就业-->
     <select id="selectEnrollment_and_employment_table" resultMap="getEnrollment_and_employment_table">
-        select * from Enrollment_and_employment_table where title like '%${title,jdbcType=VARCHAR}%'
+        select * from enrollment_and_employment_table where title like '%${title,jdbcType=VARCHAR}%'
     </select>
     <!--    删除招生就业-->
     <delete id="delEnrollment_and_employment_table">
-        delete from Enrollment_and_employment_table where id=#{id}
+        delete from enrollment_and_employment_table where id=#{id}
     </delete>
     <!--    添加招生就业-->
     <insert id="insertEnrollment_and_employment_table">
-        insert into Enrollment_and_employment_table(create_date,modify_date,title,source,content) value(#{create_date},#{modify_date},#{title},#{source},#{content})
+        insert into enrollment_and_employment_table(create_date,modify_date,title,source,content) value(#{create_date},#{modify_date},#{title},#{source},#{content})
     </insert>
     <!--    展示招生就业-->
     <select id="selectEnrollment_and_employment_table_s" resultMap="getEnrollment_and_employment_table">
-        select * from Enrollment_and_employment_table where id=#{id}
+        select * from enrollment_and_employment_table where id=#{id}
     </select>
     <!--    修改招生就业-->
     <update id="updateEnrollment_and_employment_table">
-        update Enrollment_and_employment_table set title=#{title},source=#{source},content=#{content},modify_date=#{modify_date} where id=#{id}
+        update enrollment_and_employment_table set title=#{title},source=#{source},content=#{content},modify_date=#{modify_date} where id=#{id}
     </update>
 
     <!--    查询硕士工作站-->
     <select id="selectMaster_workstation_table" resultMap="getMaster_workstation_table">
-        select * from Master_workstation_table where title like '%${title,jdbcType=VARCHAR}%'
+        select * from master_workstation_table where title like '%${title,jdbcType=VARCHAR}%'
     </select>
     <!--    删除硕士工作站-->
     <delete id="delMaster_workstation_table">
-        delete from Master_workstation_table where id=#{id}
+        delete from master_workstation_table where id=#{id}
     </delete>
     <!--    添加硕士工作站-->
     <insert id="insertMaster_workstation_table">
-        insert into Master_workstation_table(create_date,modify_date,title,source,content) value(#{create_date},#{modify_date},#{title},#{source},#{content})
+        insert into master_workstation_table(create_date,modify_date,title,source,content) value(#{create_date},#{modify_date},#{title},#{source},#{content})
     </insert>
     <!--    展示硕士工作站-->
     <select id="selectMaster_workstation_table_s" resultMap="getMaster_workstation_table">
-        select * from Master_workstation_table where id=#{id}
+        select * from master_workstation_table where id=#{id}
     </select>
     <!--    修改硕士工作站-->
     <update id="updateMaster_workstation_table">
-        update Master_workstation_table set title=#{title},source=#{source},content=#{content},modify_date=#{modify_date} where id=#{id}
+        update master_workstation_table set title=#{title},source=#{source},content=#{content},modify_date=#{modify_date} where id=#{id}
     </update>
 
 </mapper>
