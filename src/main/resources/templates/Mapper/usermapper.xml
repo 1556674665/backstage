@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="guanwang.s78.Dao.UserMapper">
-    <resultMap id="getAdministrators_table" type="guanwang.s78.User.Administrators_table">
+    <resultMap id="getAdministrators_table" type="guanwang.s78.pojo.Administrators_table">
             <result property="id" column="id" />
             <result property="create_date" column="create_date" />
             <result property="modify_date" column="modify_date" />
@@ -11,7 +11,7 @@
             <result property="password" column="password" />
             <result property="gender" column="gender" />
     </resultMap>
-    <resultMap id="getPicture_table" type="guanwang.s78.User.Picture_table">
+    <resultMap id="getPicture_table" type="guanwang.s78.pojo.Picture_table">
             <result property="id" column="id" />
             <result property="picture" column="picture" />
             <result property="create_date" column="create_date" />
@@ -20,14 +20,14 @@
             <result property="foreign_id" column="foreign_id" />
             <result property="name" column="name" />
     </resultMap>
-    <resultMap id="getCurriculum_table" type="guanwang.s78.User.Curriculum_table">
+    <resultMap id="getCurriculum_table" type="guanwang.s78.pojo.Curriculum_table">
         <result property="id" column="id" />
         <result property="create_date" column="create_date" />
         <result property="modify_date" column="modify_date" />
         <result property="curriculum_name" column="curriculum_name" />
         <result property="course_introduction" column="course_introduction" />
     </resultMap>
-    <resultMap id="getTeacher_table" type="guanwang.s78.User.Teacher_table">
+    <resultMap id="getTeacher_table" type="guanwang.s78.pojo.Teacher_table">
         <result property="id" column="id" />
         <result property="create_date" column="create_date" />
         <result property="modify_date" column="modify_date" />
@@ -37,7 +37,7 @@
         <result property="technical_expertise" column="technical_expertise" />
         <result property="project_experience" column="project_experience" />
     </resultMap>
-    <resultMap id="getCollege_News_table" type="guanwang.s78.User.College_News_table">
+    <resultMap id="getCollege_News_table" type="guanwang.s78.pojo.College_News_table">
         <result property="id" column="id" />
         <result property="create_date" column="create_date" />
         <result property="modify_date" column="modify_date" />
@@ -45,7 +45,7 @@
         <result property="content" column="content" />
         <result property="source" column="source" />
     </resultMap>
-    <resultMap id="getEnrollment_and_employment_table" type="guanwang.s78.User.Enrollment_and_employment_table">
+    <resultMap id="getEnrollment_and_employment_table" type="guanwang.s78.pojo.Enrollment_and_employment_table">
         <result property="id" column="id" />
         <result property="create_date" column="create_date" />
         <result property="modify_date" column="modify_date" />
@@ -53,7 +53,7 @@
         <result property="content" column="content" />
         <result property="source" column="source" />
     </resultMap>
-    <resultMap id="getMaster_workstation_table" type="guanwang.s78.User.Master_workstation_table">
+    <resultMap id="getMaster_workstation_table" type="guanwang.s78.pojo.Master_workstation_table">
         <result property="id" column="id" />
         <result property="create_date" column="create_date" />
         <result property="modify_date" column="modify_date" />
@@ -61,7 +61,7 @@
         <result property="content" column="content" />
         <result property="source" column="source" />
     </resultMap>
-    <resultMap id="getSchool_introduction_table" type="guanwang.s78.User.School_introduction_table">
+    <resultMap id="getSchool_introduction_table" type="guanwang.s78.pojo.School_introduction_table">
         <result property="id" column="id" />
         <result property="create_date" column="create_date" />
         <result property="modify_date" column="modify_date" />
@@ -70,7 +70,7 @@
         <result property="college_honors" column="college_honors" />
         <result property="school_name" column="school_name" />
     </resultMap>
-    <resultMap id="getRoute_to_school_table" type="guanwang.s78.User.Route_to_school_table">
+    <resultMap id="getRoute_to_school_table" type="guanwang.s78.pojo.Route_to_school_table">
         <result property="id" column="id" />
         <result property="create_date" column="create_date" />
         <result property="modify_date" column="modify_date" />

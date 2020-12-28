@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="abc">
+
+</div>
+</body>
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src="js/wangEditor.min.js"></script>
+<script type="text/javascript">
+    const E = window.wangEditor
+    const editor = new E('#abc')
+    let config = editor.customConfig ? editor.customConfig : editor.confg;
+    //开启debug模式
+    editor.config.debug = true;
+    // 关闭粘贴内容中的样式
+    editor.config.pasteFilterStyle = false
+    // 忽略粘贴内容中的图片
+    editor.config.pasteIgnoreImg = true
+    // 使用 base64 保存图片
+    // editor.config.uploadImgShowBase64 = true
+
+    // editor.config.uploadFileName = "file";
+    // editor.config.uploadImgServer = '/fileUpload';
+    // editor.config.debug = true;
+    //
+    // //自定义上传图片事件
+    // editor.config.uploadImgHooks = {
+    //     before: function (xhr, editor, files) {
+    //
+    //     },
+    //     success: function (xhr, editor, result) {
+    //         console.log("上传成功");
+    //     },
+    //     fail: function (xhr, editor, result) {
+    //         console.log("上传失败,原因是" + result);
+    //     },
+    //     error: function (xhr, editor) {
+    //         console.log("上传出错");
+    //     },
+    //     timeout: function (xhr, editor) {
+    //         console.log("上传超时");
+    //     },
+    //     customInsert: function (insertImgFn, result) {
+    //         // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
+    //         // insertImg 是插入图片的函数，editor 是编辑器对象，result 服务器端返回
+    //         var url = result.url;
+    //         insertImgFn(url)
+    //
+    //         // result 必须是一个 JSON 格式字符串！！！否则报错
+    //     }
+    //
+    // };
+    // 或者 var editor = new E( document.getElementById('editor') )
+    editor.create()
+</script>
+</html>

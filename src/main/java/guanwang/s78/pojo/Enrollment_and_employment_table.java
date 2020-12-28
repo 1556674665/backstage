@@ -1,8 +1,8 @@
-package guanwang.s78.User;
+package guanwang.s78.pojo;
 
 import java.sql.Timestamp;
 
-public class College_News_table {
+public class Enrollment_and_employment_table {
     private int id;
     private Timestamp create_date;
     private Timestamp modify_date;

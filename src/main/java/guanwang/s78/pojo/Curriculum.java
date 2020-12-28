@@ -1,35 +1,35 @@
-package guanwang.s78.User;
+package guanwang.s78.pojo;
 
-import java.sql.Timestamp;
+// 课程表映射类
+public class Curriculum {
 
-public class Curriculum_table {
-    private int id;
-    private Timestamp create_date;
-    private Timestamp modify_date;
+    private Integer id;
+    private String create_date;
+    private String modify_date;
     private String curriculum_name;
     private String course_introduction;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Timestamp getCreate_date() {
+    public String getCreate_date() {
         return create_date;
     }
 
-    public void setCreate_date(Timestamp create_date) {
+    public void setCreate_date(String create_date) {
         this.create_date = create_date;
     }
 
-    public Timestamp getModify_date() {
+    public String getModify_date() {
         return modify_date;
     }
 
-    public void setModify_date(Timestamp modify_date) {
+    public void setModify_date(String modify_date) {
         this.modify_date = modify_date;
     }
 

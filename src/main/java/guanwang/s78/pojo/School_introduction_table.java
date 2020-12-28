@@ -1,4 +1,4 @@
-package guanwang.s78.User;
+package guanwang.s78.pojo;
 
 import java.sql.Timestamp;
 
