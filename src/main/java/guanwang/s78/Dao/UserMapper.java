@@ -1,6 +1,6 @@
 package guanwang.s78.Dao;
 
-import guanwang.s78.User.*;
+import guanwang.s78.pojo.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

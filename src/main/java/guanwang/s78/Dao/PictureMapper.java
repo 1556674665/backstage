@@ -53,6 +53,18 @@ public interface PictureMapper {
             @Result(property = "id", column = "id"),
             @Result(property = "type_name", column = "type_name"),
     })
+    // 获取所有的图片类型
     List<PictureType> getPictureTypes();
+
+    @Insert("INSERT INTO picture_table(picture_name, picture_url, type_id) " +
+            "VALUES(#{p.picture_name}, #{p.picture_url}, #{p.type_id})")
+    // 会自动为表对应的对象的主键字段设置上自增的值，直接从这个对象中获取即可（返回所插入数据的id）
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
+    // 插入图片
+    Integer createPicture(@Param("p") Picture picture);
+
+    @Delete("DELETE FROM picture_table WHERE id = #{id}")
+    // 删除图片
+    Integer deletePicture(@Param("id") Integer id);
 
 }

@@ -1,7 +1,7 @@
 package guanwang.s78.PageController;
 
 import guanwang.s78.Dao.CurriculumMapper;
-import guanwang.s78.pojo.Curriculum;
+import guanwang.s78.User.Curriculum;
 import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;

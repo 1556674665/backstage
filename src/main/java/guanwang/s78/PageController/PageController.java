@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import guanwang.s78.RedisUtils;
 import guanwang.s78.Dao.UserMapper;
-import guanwang.s78.User.*;
+import guanwang.s78.pojo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

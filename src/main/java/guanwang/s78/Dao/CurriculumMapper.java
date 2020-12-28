@@ -1,6 +1,6 @@
 package guanwang.s78.Dao;
 
-import guanwang.s78.pojo.Curriculum;
+import guanwang.s78.User.Curriculum;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
@@ -37,7 +37,13 @@ public interface CurriculumMapper {
     int updateCurriculum(@Param("c") Curriculum curriculum);
 
 
+    @Insert("INSERT INTO curriculum_table(curriculum_name, picture_id) VALUES(#{c.curriculum_name}, #{c.picture_id})")
+    // 添加课程
+    Integer createCurriculum(@Param("c") Curriculum curriculum);
 
+    @Delete("DELETE FROM curriculum_table WHERE id = #{id}")
+    // 删除课程
+    Integer deleteCurriculum(@Param("id") Integer id);
 
 
 }
