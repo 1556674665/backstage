@@ -18,7 +18,7 @@
 
 <body style="border-radius: 8px" onload="change()">
 <!--<div class="title"><h2>通知详情</h2></div>-->
-<form id="form_demo" method="post" action="/insertMaster_workstation_table" >
+<!--<form id="form_demo" method="post" action="/insertMaster_workstation_table" >-->
 <div class="top">
     <div>
         <div class="top_out">
@@ -27,28 +27,97 @@
 
                 <tr>
                     <td style="border-top: none" >标题：<i class="i_start"></i></td>
-                    <td  colspan = "6"  style="text-align: left;border-top: none"><input type="text"  name ="title" minlength="2"  required id="recodeTit"></td>
+                    <td  colspan = "6"  style="text-align: left;border-top: none"><input type="text" id="title" name ="title" minlength="2"  required id="recodeTit"></td>
                 </tr>
                 <tr>
                     <td>来源：</td>
-                    <td colspan = "3" style="text-align: left"><input type="text" class="long_text" name="source"></td>
+                    <td colspan = "3" style="text-align: left"><input type="text" id="source" class="long_text" name="source"></td>
                 </tr>
                 <tr>
                     <td>内容：</td>
-                    <td colspan = "3" style="text-align: left"><input type="text" class="long_text" name="content"></td>
+                    <td colspan = "3" style="text-align: left"><div id="abc" class="long_text" name="content"></div></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
     <div class="bot_btn">
-        <input class="btn" type="submit" value="保存" />
+        <input class="btn" type="button" id="submit" value="保存" />
         <button class="btn btn1"><a href="Master_workstation_table.html" target="right">返回</a></button>
     </div>
 </div>
 </form>
 </body>
+
 <script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/wangEditor.min.js"></script>
+<script type="text/javascript">
+    const E = window.wangEditor
+    const editor = new E('#abc')
+    let config = editor.customConfig ? editor.customConfig : editor.confg;
+    //开启debug模式
+    editor.config.debug = true;
+    // 关闭粘贴内容中的样式
+    editor.config.pasteFilterStyle = false
+    // 忽略粘贴内容中的图片
+    editor.config.pasteIgnoreImg = true
+    // 使用 base64 保存图片
+    // editor.customConfig.uploadImgShowBase64 = true
+
+    editor.config.uploadFileName = "file";
+    editor.config.uploadImgServer = 'http://192.168.31.117:8080/uploadImg_curriculum1';
+    editor.config.debug = true;
+
+    //自定义上传图片事件
+    editor.config.uploadImgHooks = {
+        before: function (xhr, editor, files) {
+
+        },
+        success: function (xhr, editor, result) {
+            console.log("上传成功");
+        },
+        fail: function (xhr, editor, result) {
+            console.log("上传失败,原因是" + result);
+        },
+        error: function (xhr, editor) {
+            console.log("上传出错");
+        },
+        timeout: function (xhr, editor) {
+            console.log("上传超时");
+        },
+        customInsert: function (insertImg, result, editor) {
+            // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
+            // insertImg 是插入图片的函数，editor 是编辑器对象，result 服务器端返回
+            console.log(result)
+            for (let i = 0; i < result[0].data.length; i++) {
+                var url = result[0].data[i];
+                insertImg(url)
+            }
+
+            // result 必须是一个 JSON 格式字符串！！！否则报错
+        }
+
+    };
+    // 或者 var editor = new E( document.getElementById('editor') )
+    editor.create()
+</script>
+<script>
+    $("#submit").click(function () {
+        var title = $("#title").val()
+        var source = $("#source").val()
+        var abc = editor.txt.html()
+        $.ajax({
+            type:"post",
+            url:"/insertMaster_workstation_table",
+            data: {title:title,source:source,abc:abc},
+            success:function (value) {
+                if (value==1){
+                    window.location.href="/Master_workstation_table.html"
+                }
+            }
+        })
+    })
+</script>
 <script >
     $.validator.setDefaults({
         submitHandler: function() {

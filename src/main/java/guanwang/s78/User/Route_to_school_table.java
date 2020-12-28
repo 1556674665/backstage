@@ -6,11 +6,28 @@ public class Route_to_school_table {
     private int id;
     private Timestamp create_date;
     private Timestamp modify_date;
-    private int registration_telephone;
+    private String registration_telephone;
     private String school_address;
     private String school_website;
     private String nearby_bus_stop;
     private String nearby_bus;
+    private String school_name;
+
+    public String getRegistration_telephone() {
+        return registration_telephone;
+    }
+
+    public void setRegistration_telephone(String registration_telephone) {
+        this.registration_telephone = registration_telephone;
+    }
+
+    public String getSchool_name() {
+        return school_name;
+    }
+
+    public void setSchool_name(String school_name) {
+        this.school_name = school_name;
+    }
 
     public int getId() {
         return id;
@@ -36,13 +53,7 @@ public class Route_to_school_table {
         this.modify_date = modify_date;
     }
 
-    public int getRegistration_telephone() {
-        return registration_telephone;
-    }
 
-    public void setRegistration_telephone(int registration_telephone) {
-        this.registration_telephone = registration_telephone;
-    }
 
     public String getSchool_address() {
         return school_address;

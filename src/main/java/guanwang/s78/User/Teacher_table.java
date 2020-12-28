@@ -7,12 +7,34 @@ public class Teacher_table {
     private Timestamp create_date;
     private Timestamp modify_date;
     private String name;
-    private String brief_introduction;
-    private int age;
-    private int gender;
-    private int QQ_number;
-    private String wechat_number;
     private String introduce;
+    private String position;
+    private String technical_expertise;
+    private String project_experience;
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getTechnical_expertise() {
+        return technical_expertise;
+    }
+
+    public void setTechnical_expertise(String technical_expertise) {
+        this.technical_expertise = technical_expertise;
+    }
+
+    public String getProject_experience() {
+        return project_experience;
+    }
+
+    public void setProject_experience(String project_experience) {
+        this.project_experience = project_experience;
+    }
 
     public int getId() {
         return id;
@@ -46,45 +68,6 @@ public class Teacher_table {
         this.name = name;
     }
 
-    public String getBrief_introduction() {
-        return brief_introduction;
-    }
-
-    public void setBrief_introduction(String brief_introduction) {
-        this.brief_introduction = brief_introduction;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public int getGender() {
-        return gender;
-    }
-
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
-
-    public int getQQ_number() {
-        return QQ_number;
-    }
-
-    public void setQQ_number(int QQ_number) {
-        this.QQ_number = QQ_number;
-    }
-
-    public String getWechat_number() {
-        return wechat_number;
-    }
-
-    public void setWechat_number(String wechat_number) {
-        this.wechat_number = wechat_number;
-    }
 
     public String getIntroduce() {
         return introduce;

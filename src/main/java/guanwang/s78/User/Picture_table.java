@@ -9,6 +9,15 @@ public class Picture_table {
     private Timestamp modify_date;
     private int type;
     private int foreign_id;
+    private int name;
+
+    public int getName() {
+        return name;
+    }
+
+    public void setName(int name) {
+        this.name = name;
+    }
 
     public int getType() {
         return type;

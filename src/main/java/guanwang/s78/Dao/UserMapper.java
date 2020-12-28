@@ -1,9 +1,6 @@
 package guanwang.s78.Dao;
 
-import guanwang.s78.User.Administrators_table;
-import guanwang.s78.User.College_News_table;
-import guanwang.s78.User.Enrollment_and_employment_table;
-import guanwang.s78.User.Master_workstation_table;
+import guanwang.s78.User.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -65,4 +62,27 @@ public interface UserMapper {
     Master_workstation_table selectMaster_workstation_table_s(String id);
     //修改硕士工作站
     int updateMaster_workstation_table(String title,String source,String content,String modify_date,String id);
+
+    //查询学校介绍
+    List<School_introduction_table> selectSchool_introduction_table(String school_name);
+    //删除学校介绍
+    int delSchool_introduction_table(String id);
+    //添加学校介绍
+    int insertSchool_introduction_table(String create_date, String modify_date, String school_name, String college_honors, String teaching_advantages,String brief_introduction);
+    //展示学校介绍
+    School_introduction_table selectSchool_introduction_table_s(String id);
+    //修改学校介绍
+    int updateSchool_introduction_table(String brief_introduction,String school_name,String college_honors,String teaching_advantages,String modify_date,String id);
+
+    //查询来校路线
+    List<Route_to_school_table> selectRoute_to_school_table(String school_name);
+    //删除来校路线
+    int delRoute_to_school_table(String id);
+    //添加来校路线
+    int insertRoute_to_school_table(String school_name, String registration_telephone, String school_address, String school_website, String nearby_bus_stop,String nearby_bus,String modify_date,String create_date);
+    //展示来校路线
+    Route_to_school_table selectRoute_to_school_table_s(String id);
+    //修改来校路线
+    int updateRoute_to_school_table(String school_name,String registration_telephone,String school_address,String school_website,String nearby_bus_stop,String nearby_bus,String modify_date,String id);
+
 }

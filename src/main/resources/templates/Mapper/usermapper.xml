@@ -18,6 +18,7 @@
             <result property="modify_date" column="modify_date" />
             <result property="type" column="type" />
             <result property="foreign_id" column="foreign_id" />
+            <result property="name" column="name" />
     </resultMap>
     <resultMap id="getCurriculum_table" type="guanwang.s78.User.Curriculum_table">
         <result property="id" column="id" />
@@ -31,12 +32,10 @@
         <result property="create_date" column="create_date" />
         <result property="modify_date" column="modify_date" />
         <result property="name" column="name" />
-        <result property="brief_introduction" column="brief_introduction" />
-        <result property="age" column="age" />
-        <result property="gender" column="gender" />
-        <result property="QQ_number" column="QQ_number" />
-        <result property="wechat_number" column="wechat_number" />
         <result property="introduce" column="introduce" />
+        <result property="position" column="position" />
+        <result property="technical_expertise" column="technical_expertise" />
+        <result property="project_experience" column="project_experience" />
     </resultMap>
     <resultMap id="getCollege_News_table" type="guanwang.s78.User.College_News_table">
         <result property="id" column="id" />
@@ -69,6 +68,7 @@
         <result property="brief_introduction" column="brief_introduction" />
         <result property="teaching_advantages" column="teaching_advantages" />
         <result property="college_honors" column="college_honors" />
+        <result property="school_name" column="school_name" />
     </resultMap>
     <resultMap id="getRoute_to_school_table" type="guanwang.s78.User.Route_to_school_table">
         <result property="id" column="id" />
@@ -79,6 +79,7 @@
         <result property="school_website" column="school_website" />
         <result property="nearby_bus_stop" column="nearby_bus_stop" />
         <result property="nearby_bus" column="nearby_bus" />
+        <result property="school_name" column="school_name" />
     </resultMap>
 <!--    判断管理员登录-->
     <select id="selectusername" resultMap="getAdministrators_table">
@@ -116,23 +117,23 @@
 
     <!--    查询学校新闻-->
     <select id="selectCollege_News_table" resultMap="getCollege_News_table">
-        select * from college_News_table where title like '%${title,jdbcType=VARCHAR}%'
+        select * from college_news_table where title like '%${title,jdbcType=VARCHAR}%'
     </select>
     <!--    删除学校新闻-->
     <delete id="delCollege_News_table">
-        delete from college_News_table where id=#{id}
+        delete from college_news_table where id=#{id}
     </delete>
     <!--    添加学校新闻-->
     <insert id="insertCollege_News_table">
-        insert into college_News_table(create_date,modify_date,title,source,content) value(#{create_date},#{modify_date},#{title},#{source},#{content})
+        insert into college_news_table(create_date,modify_date,title,source,content) value(#{create_date},#{modify_date},#{title},#{source},#{content})
     </insert>
     <!--    展示学校新闻-->
     <select id="selectCollege_News_table_s" resultMap="getCollege_News_table">
-        select * from college_News_table where id=#{id}
+        select * from college_news_table where id=#{id}
     </select>
     <!--    修改学校新闻-->
     <update id="updateCollege_News_table">
-        update college_News_table set title=#{title},source=#{source},content=#{content},modify_date=#{modify_date} where id=#{id}
+        update college_news_table set title=#{title},source=#{source},content=#{content},modify_date=#{modify_date} where id=#{id}
     </update>
 
     <!--    查询招生就业-->
@@ -175,6 +176,48 @@
     <!--    修改硕士工作站-->
     <update id="updateMaster_workstation_table">
         update master_workstation_table set title=#{title},source=#{source},content=#{content},modify_date=#{modify_date} where id=#{id}
+    </update>
+
+    <!--    查询学校介绍-->
+    <select id="selectSchool_introduction_table" resultMap="getSchool_introduction_table">
+        select * from school_introduction_table where school_name like '%${school_name,jdbcType=VARCHAR}%'
+    </select>
+    <!--    删除学校介绍-->
+    <delete id="delSchool_introduction_table">
+        delete from school_introduction_table where id=#{id}
+    </delete>
+    <!--    添加学校介绍-->
+    <insert id="insertSchool_introduction_table">
+        insert into school_introduction_table(create_date,modify_date,school_name,college_honors,teaching_advantages,brief_introduction) value(#{create_date},#{modify_date},#{school_name},#{college_honors},#{teaching_advantages},#{brief_introduction})
+    </insert>
+    <!--    展示学校介绍-->
+    <select id="selectSchool_introduction_table_s" resultMap="getSchool_introduction_table">
+        select * from school_introduction_table where id=#{id}
+    </select>
+    <!--    修改学校介绍-->
+    <update id="updateSchool_introduction_table">
+        update school_introduction_table set brief_introduction=#{brief_introduction},school_name=#{school_name},college_honors=#{college_honors},teaching_advantages=#{teaching_advantages},modify_date=#{modify_date} where id=#{id}
+    </update>
+
+    <!--    查询来校路线-->
+    <select id="selectRoute_to_school_table" resultMap="getRoute_to_school_table">
+        select * from route_to_school_table where school_name like '%${school_name,jdbcType=VARCHAR}%'
+    </select>
+    <!--    删除来校路线-->
+    <delete id="delRoute_to_school_table">
+        delete from route_to_school_table where id=#{id}
+    </delete>
+    <!--    添加来校路线-->
+    <insert id="insertRoute_to_school_table">
+        insert into route_to_school_table(school_name,registration_telephone,school_address,school_website,nearby_bus_stop,nearby_bus,modify_date,create_date) value(#{school_name},#{registration_telephone},#{school_address},#{school_website},#{nearby_bus_stop},#{nearby_bus},#{modify_date},#{create_date})
+    </insert>
+    <!--    展示来校路线-->
+    <select id="selectRoute_to_school_table_s" resultMap="getRoute_to_school_table">
+        select * from route_to_school_table where id=#{id}
+    </select>
+    <!--    修改来校路线-->
+    <update id="updateRoute_to_school_table">
+        update route_to_school_table set school_name=#{school_name},registration_telephone=#{registration_telephone},school_address=#{school_address},school_website=#{school_website},nearby_bus_stop=#{nearby_bus_stop},nearby_bus=#{nearby_bus},modify_date=#{modify_date} where id=#{id}
     </update>
 
 </mapper>

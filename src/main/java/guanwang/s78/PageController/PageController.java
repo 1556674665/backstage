@@ -4,10 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import guanwang.s78.RedisUtils;
 import guanwang.s78.Dao.UserMapper;
-import guanwang.s78.User.Administrators_table;
-import guanwang.s78.User.College_News_table;
-import guanwang.s78.User.Enrollment_and_employment_table;
-import guanwang.s78.User.Master_workstation_table;
+import guanwang.s78.User.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -139,12 +136,13 @@ public class PageController {
 
     //添加学校新闻
     @RequestMapping("/insertCollege_News_table")
-    public ModelAndView insertCollege_News_table(HttpServletRequest request){
+    @ResponseBody
+    public int insertCollege_News_table(HttpServletRequest request){
         Date dateTime=new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         String dateString = df.format(dateTime);
-        usermapper.insertCollege_News_table(dateString,dateString,request.getParameter("title"),request.getParameter("source"),request.getParameter("content"));
-        return new ModelAndView("College_News_table");
+        usermapper.insertCollege_News_table(dateString,dateString,request.getParameter("title"),request.getParameter("source"),request.getParameter("abc"));
+        return 1;
     }
 
     //展示学校新闻
@@ -160,7 +158,7 @@ public class PageController {
         Date dateTime=new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         String dateString = df.format(dateTime);
-        usermapper.updateCollege_News_table(request.getParameter("title"),request.getParameter("source"),request.getParameter("content"),dateString,request.getParameter("id"));
+        usermapper.updateCollege_News_table(request.getParameter("title"),request.getParameter("source"),request.getParameter("abc"),dateString,request.getParameter("id"));
         return "College_News_table";
     }
 
@@ -192,12 +190,13 @@ public class PageController {
 
     //添加招生就业
     @RequestMapping("/insertEnrollment_and_employment_table")
-    public ModelAndView insertEnrollment_and_employment_table(HttpServletRequest request){
+    @ResponseBody
+    public int insertEnrollment_and_employment_table(HttpServletRequest request){
         Date dateTime=new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         String dateString = df.format(dateTime);
-        usermapper.insertEnrollment_and_employment_table(dateString,dateString,request.getParameter("title"),request.getParameter("source"),request.getParameter("content"));
-        return new ModelAndView("Enrollment_and_employment_table");
+        usermapper.insertEnrollment_and_employment_table(dateString,dateString,request.getParameter("title"),request.getParameter("source"),request.getParameter("abc"));
+        return 1;
     }
 
     //展示招生就业
@@ -213,7 +212,7 @@ public class PageController {
         Date dateTime=new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         String dateString = df.format(dateTime);
-        usermapper.updateEnrollment_and_employment_table(request.getParameter("title"),request.getParameter("source"),request.getParameter("content"),dateString,request.getParameter("id"));
+        usermapper.updateEnrollment_and_employment_table(request.getParameter("title"),request.getParameter("source"),request.getParameter("abc"),dateString,request.getParameter("id"));
         return "Enrollment_and_employment_table";
     }
 
@@ -239,12 +238,13 @@ public class PageController {
 
     //添加硕士工作站
     @RequestMapping("/insertMaster_workstation_table")
-    public ModelAndView insertMaster_workstation_table(HttpServletRequest request){
+    @ResponseBody
+    public int insertMaster_workstation_table(HttpServletRequest request){
         Date dateTime=new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         String dateString = df.format(dateTime);
-        usermapper.insertMaster_workstation_table(dateString,dateString,request.getParameter("title"),request.getParameter("source"),request.getParameter("content"));
-        return new ModelAndView("Master_workstation_table");
+        usermapper.insertMaster_workstation_table(dateString,dateString,request.getParameter("title"),request.getParameter("source"),request.getParameter("abc"));
+        return 1;
     }
 
     //展示硕士工作站
@@ -256,11 +256,107 @@ public class PageController {
 
     //修改硕士工作站
     @RequestMapping("/updateMaster_workstation_table")
-    public String updateMaster_workstation_table(HttpServletRequest request)  {
+    public String updateMaster_workstation_table(HttpServletRequest request) {
         Date dateTime=new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         String dateString = df.format(dateTime);
-        usermapper.updateMaster_workstation_table(request.getParameter("title"),request.getParameter("source"),request.getParameter("content"),dateString,request.getParameter("id"));
+        usermapper.updateMaster_workstation_table(request.getParameter("title"),request.getParameter("source"),request.getParameter("abc"),dateString,request.getParameter("id"));
         return "Master_workstation_table";
+    }
+
+    //查询学校介绍
+    @RequestMapping("/selectSchool_introduction_table")
+    @ResponseBody
+    public List<School_introduction_table> selectSchool_introduction_table(HttpServletRequest request){
+        String school_name =request.getParameter("user");
+        List<School_introduction_table> admin = usermapper.selectSchool_introduction_table(school_name);
+        return admin;
+    }
+
+    //删除学校介绍
+    @RequestMapping("/delSchool_introduction_table")
+    @ResponseBody
+    public JSON delSchool_introduction_table(HttpServletRequest request){
+        int a = usermapper.delSchool_introduction_table(request.getParameter("id"));
+        Map map = new HashMap();
+        map.put("data", a);
+        JSON b = new JSONObject(map);
+        return b;
+    }
+
+    //添加学校介绍
+    @RequestMapping("/insertSchool_introduction_table")
+    @ResponseBody
+    public int insertSchool_introduction_table(HttpServletRequest request){
+        Date dateTime=new Date();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String dateString = df.format(dateTime);
+        usermapper.insertSchool_introduction_table(dateString,dateString,request.getParameter("school_name"),request.getParameter("college_honors"),request.getParameter("abc"),request.getParameter("xyz"));
+        return 1;
+    }
+
+    //展示学校介绍
+    @RequestMapping("/selectSchool_introduction_table_s")
+    public String selectSchool_introduction_table_s(HttpServletRequest request,Model model){
+        model.addAttribute("College_News",usermapper.selectSchool_introduction_table_s(request.getParameter("id")));
+        return "updateSchool_introduction_table";
+    }
+
+    //修改学校介绍
+    @RequestMapping("/updateSchool_introduction_table")
+    public String updateSchool_introduction_table(HttpServletRequest request) {
+        Date dateTime=new Date();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String dateString = df.format(dateTime);
+        usermapper.updateSchool_introduction_table(request.getParameter("xyz"),request.getParameter("school_name"),request.getParameter("college_honors"),request.getParameter("abc"),dateString,request.getParameter("id"));
+        return "School_introduction_table";
+    }
+
+    //查询来校路线
+    @RequestMapping("/selectRoute_to_school_table")
+    @ResponseBody
+    public List<Route_to_school_table> selectRoute_to_school_table(HttpServletRequest request){
+        String school_name =request.getParameter("user");
+        List<Route_to_school_table> admin = usermapper.selectRoute_to_school_table(school_name);
+        return admin;
+    }
+
+    //删除来校路线
+    @RequestMapping("/delRoute_to_school_table")
+    @ResponseBody
+    public JSON delRoute_to_school_table(HttpServletRequest request){
+        int a = usermapper.delRoute_to_school_table(request.getParameter("id"));
+        Map map = new HashMap();
+        map.put("data", a);
+        JSON b = new JSONObject(map);
+        return b;
+    }
+
+    //添加来校路线
+    @RequestMapping("/insertRoute_to_school_table")
+    @ResponseBody
+    public int insertRoute_to_school_table(HttpServletRequest request){
+        Date dateTime=new Date();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String dateString = df.format(dateTime);
+        usermapper.insertRoute_to_school_table(request.getParameter("school_name"),request.getParameter("registration_telephone"),request.getParameter("school_address"),request.getParameter("school_website"),request.getParameter("nearby_bus_stop"),request.getParameter("nearby_bus"),dateString,dateString);
+        return 1;
+    }
+
+    //展示来校路线
+    @RequestMapping("/selectRoute_to_school_table_s")
+    public String selectRoute_to_school_table_s(HttpServletRequest request,Model model){
+        model.addAttribute("College_News",usermapper.selectRoute_to_school_table_s(request.getParameter("id")));
+        return "updateRoute_to_school_table";
+    }
+
+    //修改来校路线
+    @RequestMapping("/updateRoute_to_school_table")
+    public String updateRoute_to_school_table(HttpServletRequest request) {
+        Date dateTime=new Date();
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        String dateString = df.format(dateTime);
+        usermapper.updateRoute_to_school_table(request.getParameter("school_name"),request.getParameter("registration_telephone"),request.getParameter("school_address"),request.getParameter("school_website"),request.getParameter("nearby_bus_stop"),request.getParameter("nearby_bus"),dateString,request.getParameter("id"));
+        return "Route_to_school_table";
     }
 }
