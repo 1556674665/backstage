@@ -24,41 +24,30 @@ function Personload() {
                 valign: 'middle'
             },
             {
-                title: "用户名",
-                field: 'class',
+                title: "课程名称",
+                field: 'curriculum_name',
                 align: 'center',
                 valign: 'middle'
             },
             {
-                title: '角色',
-                field: 'sex',
+                title: '创建时间',
+                field: 'create_date',
                 align: 'center',
                 valign: 'middle'
             },
             {
-                title: '部门',
-                field: 'type',
-                align: 'center'
-            },
-            {
-                title: '密码',
-                field: 'work',
-                align: 'center'
-            },
-            {
-                title: '状态',
-                field: 'name',
+                title: '修改时间',
+                field: 'modify_date',
                 align: 'center',
                 valign: 'middle'
             },
-           
             {
                 title: '操作',
                 field: '',
                 align: 'center',
                 formatter: function (value, row) {
-                    var e = '<button button="#" mce_href="#" onclick="delNotice(\'' + row.WORKRECORDID + '\')">删除</button> '
-                    var d = '<button button="#" mce_href="#" onclick="editNotice(\'' + row.WORKRECORDID + '\')">编辑</button> ';
+                    var e = '<button button="#" mce_href="#" onclick="delNotice(\'' + row.id + '\')">删除</button> '
+                    var d = '<button button="#" mce_href="#" onclick="editNotice(\'' + row.id + '\')">编辑</button> ';
                     return e + d;
                 }
             }
@@ -67,20 +56,12 @@ function Personload() {
     getData();
 }
 function getData() {
-    if (flag) {
-        user = "";
-        role = "";
-
-        flag = false;
-    } else {
-        user = $("#user").val();
-        role = $("#role").val();
-
-    }
+    var curriculum_name = $("#curriculum_name").val();
     $.ajax({
         type: "GET",
-        url: "../WorkRecord/SearchWork?dtStart=" + user + "&dtEnd=" + role ,
+        url: "../CurriculumManage/SearchPermission",
         dataType: "json",
+        data: {"curriculum_name": curriculum_name},
         success: function (result) {
             if (result.data) {
                 var TableData = result.data;
@@ -91,11 +72,17 @@ function getData() {
 }
 function add() {
     openlayer()
-    currentID = "";
 }
 function edit(id) {
     openlayer()
     currentID = id;
+}
+// 课程id（通过选择的课程的id查询课程数据做修改操作）
+var curriculum_id;
+function editNotice(id) {
+    // alert(id)
+    curriculum_id = id;
+    openCurriculumModify()
 }
 function del(id) {
     alert(id)
@@ -119,10 +106,10 @@ function del(id) {
 function getCurrentID() {
     return currentID;
 }
-function openlayer(id){
+function openlayer(){
     layer.open({
         type: 2,
-        title: '添加信息',
+        title: '添加课程',
         shadeClose: true,
         shade: 0.5,
         skin: 'layui-layer-rim',
@@ -131,9 +118,28 @@ function openlayer(id){
         area: ['80%', '90%'],
         shadeClose: true,
         closeBtn: 2,
-        content: 'person_tail.html'
+        content: 'curriculum_tail.html'
+        // content: 'picture.html'
         //iframe的url
     });
+
+}
+
+function openCurriculumModify() {
+    layer.open({
+        type: 2,
+        title: '通知信息',
+        shadeClose: true,
+        shade: 0.5,
+        skin: 'layui-layer-rim',
+        closeBtn: 2,
+        area: ['98%', '98%'],
+        shadeClose: true,
+        closeBtn: 2,
+        content: 'curriculum_modify.html'
+
+    });
+
 }
 
 

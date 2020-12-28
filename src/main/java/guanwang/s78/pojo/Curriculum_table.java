@@ -1,14 +1,13 @@
-package guanwang.s78.User;
+package guanwang.s78.pojo;
 
 import java.sql.Timestamp;
 
-public class Enrollment_and_employment_table {
+public class Curriculum_table {
     private int id;
     private Timestamp create_date;
     private Timestamp modify_date;
-    private String title;
-    private String content;
-    private String source;
+    private String curriculum_name;
+    private String course_introduction;
 
     public int getId() {
         return id;
@@ -34,27 +33,19 @@ public class Enrollment_and_employment_table {
         this.modify_date = modify_date;
     }
 
-    public String getTitle() {
-        return title;
+    public String getCurriculum_name() {
+        return curriculum_name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setCurriculum_name(String curriculum_name) {
+        this.curriculum_name = curriculum_name;
     }
 
-    public String getContent() {
-        return content;
+    public String getCourse_introduction() {
+        return course_introduction;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
+    public void setCourse_introduction(String course_introduction) {
+        this.course_introduction = course_introduction;
     }
 }

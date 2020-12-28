@@ -1,15 +1,12 @@
 package guanwang.s78.Dao;
 
-import guanwang.s78.User.Administrators_table;
-import guanwang.s78.User.College_News_table;
-import guanwang.s78.User.Enrollment_and_employment_table;
-import guanwang.s78.User.Master_workstation_table;
+import guanwang.s78.pojo.Administrators_table;
+import guanwang.s78.pojo.College_News_table;
+import guanwang.s78.pojo.Enrollment_and_employment_table;
+import guanwang.s78.pojo.Master_workstation_table;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Mapper
