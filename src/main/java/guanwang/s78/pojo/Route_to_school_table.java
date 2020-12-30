@@ -12,6 +12,24 @@ public class Route_to_school_table {
     private String nearby_bus_stop;
     private String nearby_bus;
     private String school_name;
+    private String business_cooperation;
+    private String e_mail;
+
+    public String getBusiness_cooperation() {
+        return business_cooperation;
+    }
+
+    public void setBusiness_cooperation(String business_cooperation) {
+        this.business_cooperation = business_cooperation;
+    }
+
+    public String getE_mail() {
+        return e_mail;
+    }
+
+    public void setE_mail(String e_mail) {
+        this.e_mail = e_mail;
+    }
 
     public String getRegistration_telephone() {
         return registration_telephone;

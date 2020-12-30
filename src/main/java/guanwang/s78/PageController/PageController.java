@@ -339,7 +339,7 @@ public class PageController {
         Date dateTime=new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         String dateString = df.format(dateTime);
-        usermapper.insertRoute_to_school_table(request.getParameter("school_name"),request.getParameter("registration_telephone"),request.getParameter("school_address"),request.getParameter("school_website"),request.getParameter("nearby_bus_stop"),request.getParameter("nearby_bus"),dateString,dateString);
+        usermapper.insertRoute_to_school_table(request.getParameter("business_cooperation"),request.getParameter("e_mail"),request.getParameter("school_name"),request.getParameter("registration_telephone"),request.getParameter("school_address"),request.getParameter("school_website"),request.getParameter("nearby_bus_stop"),request.getParameter("nearby_bus"),dateString,dateString);
         return 1;
     }
 
@@ -356,7 +356,7 @@ public class PageController {
         Date dateTime=new Date();
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         String dateString = df.format(dateTime);
-        usermapper.updateRoute_to_school_table(request.getParameter("school_name"),request.getParameter("registration_telephone"),request.getParameter("school_address"),request.getParameter("school_website"),request.getParameter("nearby_bus_stop"),request.getParameter("nearby_bus"),dateString,request.getParameter("id"));
+        usermapper.updateRoute_to_school_table(request.getParameter("business_cooperation"),request.getParameter("e_mail"),request.getParameter("school_name"),request.getParameter("registration_telephone"),request.getParameter("school_address"),request.getParameter("school_website"),request.getParameter("nearby_bus_stop"),request.getParameter("nearby_bus"),dateString,request.getParameter("id"));
         return "Route_to_school_table";
     }
 }

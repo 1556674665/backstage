@@ -80,6 +80,8 @@
         <result property="nearby_bus_stop" column="nearby_bus_stop" />
         <result property="nearby_bus" column="nearby_bus" />
         <result property="school_name" column="school_name" />
+        <result property="business_cooperation" column="business_cooperation" />
+        <result property="e_mail" column="e_mail" />
     </resultMap>
 <!--    判断管理员登录-->
     <select id="selectusername" resultMap="getAdministrators_table">
@@ -209,7 +211,7 @@
     </delete>
     <!--    添加来校路线-->
     <insert id="insertRoute_to_school_table">
-        insert into route_to_school_table(school_name,registration_telephone,school_address,school_website,nearby_bus_stop,nearby_bus,modify_date,create_date) value(#{school_name},#{registration_telephone},#{school_address},#{school_website},#{nearby_bus_stop},#{nearby_bus},#{modify_date},#{create_date})
+        insert into route_to_school_table(business_cooperation,e_mail,school_name,registration_telephone,school_address,school_website,nearby_bus_stop,nearby_bus,modify_date,create_date) value(#{business_cooperation},#{e_mail},#{school_name},#{registration_telephone},#{school_address},#{school_website},#{nearby_bus_stop},#{nearby_bus},#{modify_date},#{create_date})
     </insert>
     <!--    展示来校路线-->
     <select id="selectRoute_to_school_table_s" resultMap="getRoute_to_school_table">
@@ -217,7 +219,7 @@
     </select>
     <!--    修改来校路线-->
     <update id="updateRoute_to_school_table">
-        update route_to_school_table set school_name=#{school_name},registration_telephone=#{registration_telephone},school_address=#{school_address},school_website=#{school_website},nearby_bus_stop=#{nearby_bus_stop},nearby_bus=#{nearby_bus},modify_date=#{modify_date} where id=#{id}
+        update route_to_school_table set business_cooperation=#{business_cooperation},e_mail=#{e_mail}, school_name=#{school_name},registration_telephone=#{registration_telephone},school_address=#{school_address},school_website=#{school_website},nearby_bus_stop=#{nearby_bus_stop},nearby_bus=#{nearby_bus},modify_date=#{modify_date} where id=#{id}
     </update>
 
 </mapper>

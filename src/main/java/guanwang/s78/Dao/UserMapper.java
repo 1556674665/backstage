@@ -79,10 +79,10 @@ public interface UserMapper {
     //删除来校路线
     int delRoute_to_school_table(String id);
     //添加来校路线
-    int insertRoute_to_school_table(String school_name, String registration_telephone, String school_address, String school_website, String nearby_bus_stop,String nearby_bus,String modify_date,String create_date);
+    int insertRoute_to_school_table(String business_cooperation,String e_mail,String school_name, String registration_telephone, String school_address, String school_website, String nearby_bus_stop,String nearby_bus,String modify_date,String create_date);
     //展示来校路线
     Route_to_school_table selectRoute_to_school_table_s(String id);
     //修改来校路线
-    int updateRoute_to_school_table(String school_name,String registration_telephone,String school_address,String school_website,String nearby_bus_stop,String nearby_bus,String modify_date,String id);
+    int updateRoute_to_school_table(String business_cooperation,String e_mail,String school_name,String registration_telephone,String school_address,String school_website,String nearby_bus_stop,String nearby_bus,String modify_date,String id);
 
 }
